@@ -9,7 +9,7 @@ pipeline {
 
                 // Build Docker image
                 script {
-                    sudo docker.build('realblegend/my-static-website:1.0').withDockerfile()
+                    sudo docker.build('realblegend/my-static-website:1.0')
                 }
             }
         }
