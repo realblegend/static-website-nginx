@@ -9,14 +9,14 @@ pipeline {
 
                 // Build Docker image
                 script {
-                    docker.build('realblegend/my-static-website:1.1')
+                    docker.build('realblegend/my-static-website:1.2')
                 }
             }
         }
         
         stage('Docker Image Push') {
             steps {
-                sh 'docker push realblegend/my-static-website:1.1'
+                sh 'docker push realblegend/my-static-website:1.2'
             }
         }
     }
