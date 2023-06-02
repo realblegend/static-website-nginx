@@ -8,12 +8,16 @@ pipeline {
                 checkout scm
 
                 // Build Docker image
-                script 
-                        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        def dockerImage = docker.build('realblegend/my-static-website:1.0')
-                        dockerImage.push()
+                script {
+                    docker.build('realblegend/my-static-website:1.0').withDockerfile()
                 }
 
+                // Push Docker image
+                script {
+                    withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://registry.hub.docker.com']) {
+                        docker.image('realblegend/my-static-website:1.0').push()
+                    }
+                }
             }
         }
     }
