@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build and Push Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 // Checkout code from Git repository
                 checkout scm
@@ -14,9 +14,9 @@ pipeline {
             }
         }
         
-        stage('Run Docker Container') {
+        stage('Docker Image Push') {
             steps {
-                sh 'docker run -d -p 8080:80 realblegend/my-static-website:1.0'
+                sh 'docker push realblegend/my-static-website:1.0'
             }
         }
     }
