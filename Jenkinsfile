@@ -16,9 +16,7 @@ pipeline {
         
         stage('Run Docker Container') {
             steps {
-                script {
-                    docker.run("-d -p 8080:80 realblegend/my-static-website:1.0")
-                }
+                sh 'docker run -d -p 8080:80 realblegend/my-static-website:1.0'
             }
         }
     }
